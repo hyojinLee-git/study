@@ -20,3 +20,9 @@ function createBoard() {
         }
     }
 }
+const board = createBoard();
+board[0].piece = {
+    move(from, to) {
+        return true;
+    }
+};
