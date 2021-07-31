@@ -1,7 +1,8 @@
-import React, { useEffect, useState,useRef } from 'react';
+import React, { useEffect, useState,useRef, useMemo, useCallback } from 'react';
 import Ball from './Ball';
 
 function getWinNumbers(){
+    console.log('getnumber')
     const candidate=Array(45).fill().map((v,i)=>i+1);
     const shuffle=[];
     while (candidate.length>0){
@@ -13,19 +14,21 @@ function getWinNumbers(){
 }
 
 const Lotto = () => {
-    const [winNumbers,setWinNumbers]=useState(getWinNumbers())
+    const lottoNumbers=useMemo(()=>getWinNumbers(),[])
+    const [winNumbers,setWinNumbers]=useState(lottoNumbers)
     const [winBalls,setWinBalls]=useState([])
     const [redo, setRedo]=useState(false)
     const [bonus,setBonus]=useState()
     const timeouts=useRef([])
 
-    const onClickRedo=()=>{
-        setWinBalls(getWinNumbers())
+    const onClickRedo=useCallback(()=>{
+        console.log(winNumbers)
+        setWinNumbers(getWinNumbers())
         setWinBalls([])
         setBonus()
         setRedo(false)
         timeouts.current=[]
-    }
+    },[winNumbers])
 
     useEffect(()=>{
         for(let i=0; i<winNumbers.length-1;i++){
@@ -44,15 +47,14 @@ const Lotto = () => {
 
     return (
         <>
-                <div>당첨 숫자</div>
-                <div id="결과창">
-                    {winBalls.map((v)=><Ball key={v} number={v}/>)}
-                </div>
-                <div>보너스!</div>
-                {bonus && <Ball number={bonus}/>}
-                {redo && <button onClick={onClickRedo}>한번 더</button>}
-                
-            </>
+            <div>당첨 숫자</div>
+            <div id="결과창">
+                {winBalls.map((v)=><Ball key={v} number={v}/>)}
+            </div>
+            <div>보너스!</div>
+            {bonus && <Ball number={bonus}/>}
+            {redo && <button onClick={onClickRedo}>한번 더</button>}
+        </>
     );
 };
 
