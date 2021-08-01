@@ -9,3 +9,9 @@ for (let i = 0; i < array.length - 1; i++) {
   arr = [...arr, array[i]];
   console.log(arr);
 }
+
+let all = true;
+for (let i = 0; i < 2; i++) {
+  all = false;
+}
+console.log(all);

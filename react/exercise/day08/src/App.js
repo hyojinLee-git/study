@@ -7,7 +7,7 @@ import Test10 from './components/Test10';
 const App = () => {
   return (
     <div>
-      <Test10 />
+      <Gallery />
     </div>
   );
 };
