@@ -7,11 +7,23 @@ for (let i = 0; i < array.length - 1; i++) {
   //     arr = [...arr, array[i]];
   //   }, (i + 1) * 1000);
   arr = [...arr, array[i]];
-  console.log(arr);
+  //console.log(arr);
 }
 
 let all = true;
 for (let i = 0; i < 2; i++) {
   all = false;
 }
-console.log(all);
+//console.log(all);
+
+const table = [
+  [1, 1, 1, 1],
+  [1, 1, 1, 1],
+  [1, 1, 1, 1],
+  [1, 1, 1, 1],
+];
+const newTable = [...table];
+let row = 2;
+newTable[row] = [...table[row]];
+console.log(table);
+console.log(newTable);
