@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+<body>
+    <div class="one">one
+        <div class="two">two
+            <div class="three">three</div>
+        </div>
+    </div>
+    <script>
+        const divs=document.querySelectorAll('div');
+        const three=document.querySelector('.three')
+        const logEvent=event=>{
+            console.log(event.currentTarget.className)
+        }
+        three.addEventListener('click',event=>{
+            console.log("i'm three")
+        })
+        divs.forEach(div=>
+            div.addEventListener('click',logEvent,{capture:true})
+        )
+        
+    </script>
+</body>
+</html>
