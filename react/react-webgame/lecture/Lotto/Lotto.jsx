@@ -35,7 +35,7 @@ const Lotto = () => {
         for(let i=0; i<winNumbers.length-1;i++){
             timeouts.current[i]=setTimeout(()=>{
                 console.log(winBalls)
-                setWinBalls([...winBalls,winNumbers[i]])
+                setWinBalls((prevBalls)=>[...prevBalls,winNumbers[i]])
             },(i+1)*1000)
         }
         timeouts.current[6]=setTimeout(()=>{

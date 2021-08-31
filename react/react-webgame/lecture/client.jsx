@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import Game from './Game'
 
-
-ReactDOM.render(<></>,document.querySelector('#root'))
+ReactDOM.render(<Game/>,document.querySelector('#root'))
