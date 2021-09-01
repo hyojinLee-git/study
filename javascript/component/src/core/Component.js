@@ -1,14 +1,16 @@
 export default class Component {
   $target;
   $state;
-  constructor($target) {
+  $props;
+  constructor($target, $props) {
     this.$target = $target;
+    this.$props = $props; //$props 할당
     this.setup();
     this.render();
-    //constructor에서 한번만 실행
-    this.setEvent();
+    this.setEvent(); //constructor에서 한번만 실행
   }
   setup() {}
+  mounted() {}
   template() {
     return '';
   }
@@ -16,6 +18,7 @@ export default class Component {
     this.$target.innerHTML = this.template();
     //render을 실행할때마다 이벤트를 새로 등록하게 된다.
     //this.setEvent();
+    this.mounted(); //render 후 mounted 실행
   }
   setEvent() {}
   setState(newState) {
